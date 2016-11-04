@@ -1,0 +1,50 @@
+/* Toolbar */
+
+#wallet-navigation-bar.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+  background-color: transparent;
+}
+
+#wallet-navigation-bar.navbar-default .navbar-toggle {
+  border: none;
+}
+
+#wallet-navigation-bar .navbar-brand {
+  margin-left:50px;
+  color:#337AB7;
+}
+
+#wallet-navigation-bar .navbar-brand i {
+  vertical-align: middle;
+}
+
+#wallet-navigation-bar li.active {
+  border-bottom:5px solid #337AB7;
+}
+
+#wallet-navigation-bar .navbar-collapse {
+  padding: 0;
+}
+
+#wallet-navigation-bar .navbar-right {
+  margin:0;
+}
+
+@media (min-width:768px) {
+  #wallet-navigation-bar .navbar-right {
+    margin-right:50px;
+  }
+}
+
+/* Boxes */
+.panel {
+  padding:0;
+}
+
+.panel-heading {
+  font-weight:bold;
+}
+
+.panel-footer {
+  background-color: white;
+  text-align: right;
+}
