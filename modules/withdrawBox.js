@@ -12,9 +12,15 @@ export default class WithdrawBox extends React.Component {
         </div>
         <div className="panel-body-input">
           <div className="form-group">
-            <label>Amount</label>
             <input ref="amount" className="form-control" type="text" placeholder="Enter the amount..."/>
-            <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Accept</button>
+            <div className="panel-buttons">
+              <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Accept</button>
+            </div>
+          </div>
+        </div>
+        <div ref="warning" id="withdraw-alert" className="panel-body-warning hidden">
+          <div className="alert alert-danger">
+            You cannot withdraw more money than you have !
           </div>
         </div>
       </div>
@@ -23,15 +29,24 @@ export default class WithdrawBox extends React.Component {
 
   handleClick() {
     var strKey = Constants.LOCALSTORAGE_KEY + Date.now();
-    let floatValue = parseFloat(this.refs.amount.value) * -1;
-    let objTransaction = {
-      date: Date.now(),
-      value: floatValue
+    let floatValue = parseFloat(this.refs.amount.value);
+    var eltWarning = $("#" + this.refs.warning.id);
+
+    if(floatValue > this.props.balance){
+      eltWarning.removeClass("hidden");
     }
-    window.localStorage.setItem(strKey,JSON.stringify(objTransaction));
-    if(this.props.fnCallback)
-      this.props.fnCallback();
-    this.refs.amount.value = "";
+    else {
+      eltWarning.addClass("hidden")
+      floatValue *= -1;
+      let objTransaction = {
+        date: Date.now(),
+        value: floatValue
+      }
+      window.localStorage.setItem(strKey,JSON.stringify(objTransaction));
+      if(this.props.fnCallback)
+        this.props.fnCallback();
+      this.refs.amount.value = "";
+    }
   }
 
 }

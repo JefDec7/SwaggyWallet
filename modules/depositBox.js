@@ -12,9 +12,10 @@ export default class DepositBox extends React.Component {
         </div>
         <div className="panel-body-input">
           <div className="form-group">
-            <label>Amount</label>
             <input ref="amount" className="form-control" type="text" placeholder="Enter the amount..."/>
-            <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Accept</button>
+            <div className="panel-buttons">
+              <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Accept</button>
+            </div>
           </div>
         </div>
       </div>

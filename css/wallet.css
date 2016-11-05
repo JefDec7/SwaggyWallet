@@ -54,12 +54,16 @@
   margin-top:20px;
 }
 
-.panel button {
-  float:right;
+.panel-buttons {
+  text-align:right;
   margin-top: 5px;
 }
 
 #reset-box .panel-body-input {
+  display: none;
+}
+
+.panel-body-warning.hidden {
   display: none;
 }
 

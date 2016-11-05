@@ -16,10 +16,11 @@ export default class HomePage extends Page {
     return <div>
       <Toolbar currentPage="home"/>
       <DepositBox
-        fnCallback={this.computeBalance.bind(this)}
+        fnCallback={this.refreshComponents.bind(this)}
       />
       <WithdrawBox
-        fnCallback={this.computeBalance.bind(this)}
+        fnCallback={this.refreshComponents.bind(this)}
+        balance={this.state.balance}
       />
       <BalanceBox balance={this.state.balance} />
       <TransactionBox transactions={this.state.transactions} />

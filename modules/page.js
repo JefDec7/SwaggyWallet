@@ -12,6 +12,10 @@ export default class Page extends React.Component {
   }
 
   componentDidMount() {
+    this.refreshComponents();
+  }
+
+  refreshComponents() {
     this.computeBalance();
     this.getArrayOfTransactions();
   }
