@@ -38,6 +38,7 @@
 /* Boxes */
 .panel {
   padding:0;
+  border-radius:0px
 }
 
 .panel-heading {
@@ -47,4 +48,26 @@
 .panel-footer {
   background-color: white;
   text-align: right;
+}
+
+.panel-body-input {
+  margin-top:30px;
+}
+
+#reset-box .panel-body-input {
+  display: none;
+}
+
+#reset-box button {
+  background-color: #C9302C;
+  border-color: #C9302C;
+}
+
+#balance-box {
+  height:100px;
+  font-size:24px;
+}
+
+#wallet-icon {
+  margin-right:10px;
 }
