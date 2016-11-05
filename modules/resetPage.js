@@ -10,13 +10,17 @@ export default class ResetPage extends Page {
   render() {
     return <div>
       <Toolbar currentPage="reset"/>
-      <ResetBox
-        fnCallback={this.refreshComponents.bind(this)}
-      />
-      <BalanceBox
-        balance={this.state.balance}
-      />
-      <TransactionBox transactions={this.state.transactions} />
+      <div className="half-screen col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <BalanceBox
+          balance={this.state.balance}
+        />
+        <TransactionBox transactions={this.state.transactions} />
+      </div>
+      <div className="half-screen col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ResetBox
+          fnCallback={this.refreshComponents.bind(this)}
+        />
+      </div>
     </div>
   }
 }

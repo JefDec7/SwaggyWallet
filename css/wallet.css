@@ -35,6 +35,23 @@
   }
 }
 
+#wallet-icon {
+  margin-right:10px;
+}
+
+/* General */
+
+.half-screen {
+  height:calc(100vh - 100px);
+  display: inline-block;
+}
+
+@media (max-width:990px) {
+  .half-screen {
+    height:auto;
+  }
+}
+
 /* Boxes */
 .panel {
   padding:0;
@@ -77,6 +94,7 @@
   font-size:24px;
 }
 
-#wallet-icon {
-  margin-right:10px;
+#transaction-box {
+  max-height:60vh;
+  overflow:scroll;
 }
