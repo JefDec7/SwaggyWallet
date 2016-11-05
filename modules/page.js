@@ -6,25 +6,39 @@ export default class Page extends React.Component {
   constructor() {
     super();
     this.state = {
-      balance:0.00
+      balance:0.00,
+      transactions:[]
     }
   }
 
   componentDidMount() {
     this.computeBalance();
+    this.getArrayOfTransactions();
   }
 
   computeBalance() {
-    var localStorage = window.localStorage;
-    var balance = 0;
-    var strToCheck = Constants.LOCALSTORAGE_KEY;
-    for(var key in localStorage){
+    let localStorage = window.localStorage;
+    let balance = 0;
+    let strToCheck = Constants.LOCALSTORAGE_KEY;
+    for(let key in localStorage){
       if(key.substring(0, strToCheck.length) == strToCheck){
-        var money = parseFloat(localStorage.getItem(key));
+        let objTransaction = JSON.parse(localStorage.getItem(key));
+        let money = parseFloat(objTransaction.value);
         balance += money;
       }
     }
     this.setState({balance: balance});
+  }
+
+  getArrayOfTransactions(){
+    let aTransactions = [];
+    let localStorage = window.localStorage;
+    let strToCheck = Constants.LOCALSTORAGE_KEY;
+    for(let key in localStorage){
+      var objTransaction = JSON.parse(localStorage.getItem(key));
+      aTransactions.push(objTransaction);
+    }
+    this.setState({transactions: aTransactions});
   }
 
 }

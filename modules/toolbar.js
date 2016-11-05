@@ -20,8 +20,8 @@ export default class Toolbar extends React.Component {
           </div>
           <div id="navbar" className="navbar-collapse collapse" aria-expanded="false" style={{height: 0 + 'px'}}>
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="/">Home</a></li>
-              <li><a href="/#/reset">Reset</a></li>
+              <li className={this.props.currentPage == "home" ? "active" : ""}><a href="/">Home</a></li>
+              <li className={this.props.currentPage == "reset" ? "active" : ""}><a href="/#/reset">Reset</a></li>
               <li><a href="https://github.com/JefDec7/SwaggyWallet">View Source</a></li>
             </ul>
           </div>

@@ -14,11 +14,9 @@ export default class WithdrawBox extends React.Component {
           <div className="form-group">
             <label>Amount</label>
             <input ref="amount" className="form-control" type="text" placeholder="Enter the amount..."/>
+            <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Accept</button>
           </div>
         </div>
-      </div>
-      <div className="panel-footer">
-        <button className="btn btn-primary" onClick={this.handleClick.bind(this)}>Accept</button>
       </div>
     </div>);
   }
@@ -26,7 +24,11 @@ export default class WithdrawBox extends React.Component {
   handleClick() {
     var strKey = Constants.LOCALSTORAGE_KEY + Date.now();
     let floatValue = parseFloat(this.refs.amount.value) * -1;
-    window.localStorage.setItem(strKey,floatValue);
+    let objTransaction = {
+      date: Date.now(),
+      value: floatValue
+    }
+    window.localStorage.setItem(strKey,JSON.stringify(objTransaction));
     if(this.props.fnCallback)
       this.props.fnCallback();
     this.refs.amount.value = "";

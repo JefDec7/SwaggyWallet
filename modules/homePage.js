@@ -3,6 +3,7 @@ import DepositBox from './depositBox'
 import Toolbar from './toolbar'
 import WithdrawBox from './withdrawBox'
 import BalanceBox from './balanceBox'
+import TransactionBox from './transactionBox'
 import Page from './page'
 
 export default class HomePage extends Page {
@@ -21,6 +22,7 @@ export default class HomePage extends Page {
         fnCallback={this.computeBalance.bind(this)}
       />
       <BalanceBox balance={this.state.balance} />
+      <TransactionBox transactions={this.state.transactions} />
     </div>
   }
 }

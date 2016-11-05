@@ -9,10 +9,8 @@ export default class ResetBox extends React.Component {
       <div className="panel-body">
         <div className="panel-body-text">
           Resetting your transactions is irreversible ! Do it with caution !
+          <button className="btn btn-danger" onClick={this.handleClick.bind(this)}>Reset</button>
         </div>
-      </div>
-      <div className="panel-footer">
-        <button className="btn btn-danger" onClick={this.handleClick.bind(this)}>Reset</button>
       </div>
     </div>);
   }

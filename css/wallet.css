@@ -51,7 +51,12 @@
 }
 
 .panel-body-input {
-  margin-top:30px;
+  margin-top:20px;
+}
+
+.panel button {
+  float:right;
+  margin-top: 5px;
 }
 
 #reset-box .panel-body-input {
