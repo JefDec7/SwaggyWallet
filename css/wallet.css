@@ -98,3 +98,18 @@
   max-height:60vh;
   overflow:scroll;
 }
+
+#deposit-input, #withdraw-input {
+  display: inline-block;
+  width:95%;
+}
+
+.current-currency {
+  width:5%;
+  text-align: center;
+  display: inline-block;
+}
+
+#easter-egg {
+  text-align: right;
+}
