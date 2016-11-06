@@ -15,11 +15,14 @@ export default class Page extends React.Component {
     this.refreshComponents();
   }
 
+  // Refresh the balance and the table of transactions
+  // Transaction callback
   refreshComponents() {
     this.computeBalance();
     this.getArrayOfTransactions();
   }
 
+  // Computes the balance
   computeBalance() {
     let localStorage = window.localStorage;
     let balance = 0;
@@ -34,6 +37,7 @@ export default class Page extends React.Component {
     this.setState({balance: balance});
   }
 
+  // Builds the table of transactions
   getArrayOfTransactions(){
     let aTransactions = [];
     let localStorage = window.localStorage;

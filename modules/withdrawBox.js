@@ -1,7 +1,8 @@
 import React from 'react'
 import Constants from './constants'
+import Box from './box'
 
-export default class WithdrawBox extends React.Component {
+export default class WithdrawBox extends Box {
 
   render() {
     return (<div id="withdraw-box" className="panel panel-default col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
@@ -19,7 +20,7 @@ export default class WithdrawBox extends React.Component {
             </div>
           </div>
         </div>
-        <div ref="warningWithdraw" id="withdraw-alert" className="panel-body-warning hidden">
+        <div ref="warning" id="withdraw-alert" className="panel-body-warning hidden">
           <div className="alert alert-danger">
           </div>
         </div>
@@ -27,38 +28,19 @@ export default class WithdrawBox extends React.Component {
     </div>);
   }
 
-  setTwoDecimal() {
-    this.refs.amount.value = parseFloat(this.refs.amount.value).toFixed(2);
-  }
-
   handleClick() {
-    var strKey = Constants.LOCALSTORAGE_KEY + Date.now();
     let floatValue = parseFloat(this.refs.amount.value);
-    var eltWarning = $("#" + this.refs.warningWithdraw.id);
-
-    if(floatValue > this.props.balance ){
-      eltWarning.find("div").text("You cannot withdraw more money than you have !");
-      eltWarning.removeClass("hidden");
-    }
-    else if(isNaN(floatValue)){
-      eltWarning.find("div").text("The value has to be numeric !");
-      eltWarning.removeClass("hidden");
-    }
-    else if(floatValue < 0) {
-      eltWarning.removeClass("hidden");
-      eltWarning.find("div").text("The value can't be negative !");
-    }
-    else {
-      eltWarning.addClass("hidden")
+    let strKey = Constants.LOCALSTORAGE_KEY + Date.now();
+    if(this.checkValue()){
       floatValue *= -1;
       let objTransaction = {
         date: Date.now(),
         value: floatValue
       }
       window.localStorage.setItem(strKey,JSON.stringify(objTransaction));
+      this.refs.amount.value = "";
       if(this.props.fnCallback)
         this.props.fnCallback();
-      this.refs.amount.value = "";
     }
   }
 

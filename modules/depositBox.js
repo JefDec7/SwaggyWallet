@@ -1,7 +1,8 @@
 import React from 'react'
 import Constants from './constants'
+import Box from './box'
 
-export default class DepositBox extends React.Component {
+export default class DepositBox extends Box {
 
   render() {
     return (<div id="deposit-box" className="panel panel-default col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
@@ -19,7 +20,7 @@ export default class DepositBox extends React.Component {
             </div>
           </div>
         </div>
-        <div ref="warningDeposit" id="deposit-alert" className="panel-body-warning hidden">
+        <div ref="warning" id="deposit-alert" className="panel-body-warning hidden">
           <div className="alert alert-danger">
           </div>
         </div>
@@ -27,33 +28,18 @@ export default class DepositBox extends React.Component {
     </div>);
   }
 
-  setTwoDecimal() {
-    this.refs.amount.value = parseFloat(this.refs.amount.value).toFixed(2);
-  }
-
   handleClick() {
-    let strKey = Constants.LOCALSTORAGE_KEY + Date.now();
     let floatValue = parseFloat(this.refs.amount.value);
-    var eltWarning = $("#" + this.refs.warningDeposit.id);
-    if(isNaN(floatValue)){
-      eltWarning.removeClass("hidden");
-      eltWarning.find("div").text("The value has to be numeric !");
-    }
-    else if(floatValue < 0) {
-      eltWarning.removeClass("hidden");
-      eltWarning.find("div").text("The value can't be negative !");
-    }
-    else {
-      eltWarning.addClass("hidden");
+    let strKey = Constants.LOCALSTORAGE_KEY + Date.now();
+    if(this.checkValue()){
       let objTransaction = {
         date: Date.now(),
         value: floatValue
       }
       window.localStorage.setItem(strKey,JSON.stringify(objTransaction));
+      this.refs.amount.value = "";
       if(this.props.fnCallback)
         this.props.fnCallback();
-      this.refs.amount.value = "";
     }
   }
-
 }
